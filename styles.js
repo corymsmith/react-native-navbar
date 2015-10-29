@@ -1,7 +1,11 @@
 const React = require('react-native');
 
+const {
+  Platform
+  } = React;
+
 const NAV_BAR_HEIGHT = 44;
-const STATUS_BAR_HEIGHT = 20;
+const STATUS_BAR_HEIGHT = Platform.OS === 'ios' ? 20 : 0;
 const NAV_HEIGHT = NAV_BAR_HEIGHT + STATUS_BAR_HEIGHT;
 
 module.exports = React.StyleSheet.create({

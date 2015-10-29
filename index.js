@@ -6,7 +6,8 @@ const {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
+  Platform
 } = React;
 
 const NavigationBar = React.createClass({
@@ -173,10 +174,12 @@ const NavigationBar = React.createClass({
   },
 
   render() {
-    if (this.props.statusBar === 'lightContent') {
-      StatusBarIOS.setStyle('light-content', false);
-    } else if (this.props.statusBar === 'default') {
-      StatusBarIOS.setStyle('default', false);
+    if(Platform.OS === 'ios') {
+      if (this.props.statusBar === 'lightContent') {
+        StatusBarIOS.setStyle('light-content', false);
+      } else if (this.props.statusBar === 'default') {
+        StatusBarIOS.setStyle('default', false);
+      }
     }
 
     const { style, backgroundStyle, statusBarStyle } = this.props;
